@@ -20,12 +20,12 @@ int mainmenu_totalentries = 5;
 int value1 = 0;
 int value2 = 0;
 int value3 = 0;
-int 1value[1] = {value1}
-int 2value[2] = {value2, value3}
-int 1valuehextemp[4]
-int 2valuehextemp[4]
-int 1valuehex = 0x00
-int 2valuehex = 0x00
+int value11[1] = {value1};
+int value12[2] = {value2, value3};
+int value11hextemp[4];
+int value12hextemp[4];
+int value11hex = 0x00;
+int value12hex = 0x00;
 char *mainmenu_entries[6] = {
 "Set Play Coins to 300",
 "Set Play Coins to 10",
@@ -210,14 +210,14 @@ int menu_customplaycoins
 	if (position = 3 && kDown && KEY_A)
 	{
 		position = 0;
-		int z = atoi(1value);
-		int y = atoi(2value);
-		sprintf(1valuehextemp, "0x%02x", 1value);
-		sprintf(2valuehextemp, "0x%02x", 2value);
-		1valuehex = atoi(1valuehextemp);
-		2valuehex = atoi(2valuehextemp);
+		int z = atoi(value11);
+		int y = atoi(value12);
+		sprintf(value11hextemp, "0x%02x", value11);
+		sprintf(value12hextemp, "0x%02x", value12);
+		value11hex = atoi(value11hextemp);
+		value12hex = atoi(value12hextemp);
 		
-		return setcoins(1valuehex, 2valuehex);
+		return setcoins(value11hex, value12hex);
                 
 	}
 }
