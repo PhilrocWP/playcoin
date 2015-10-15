@@ -20,7 +20,8 @@ int mainmenu_totalentries = 5;
 int value1 = 0;
 int value2 = 0;
 int value3 = 0;
-int value[3] = {value1, value2, value3}
+int 1value[1] = {value1}
+int 2value[2] = {value2, value3}
 int valuehex = 0x00
 char *mainmenu_entries[6] = {
 "Set Play Coins to 300",
