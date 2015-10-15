@@ -13,16 +13,23 @@ int menu_10coins();
 int menu_0coins();
 int menu_gamecoindat2sd();
 int menu_sd2gamecoindat();
+int menu_customplaycoins();
 int setcoins(u8 highByte, u8 lowByte);
 
 int mainmenu_totalentries = 5;
-char *mainmenu_entries[5] = {
+int value1 = 0;
+int value2 = 0;
+int value3 = 0;
+int value[3] = {value1, value2, value3}
+int valuehex = 0x00
+char *mainmenu_entries[6] = {
 "Set Play Coins to 300",
 "Set Play Coins to 10",
 "Set Play Coins to 0",
 "Copy gamecoin.dat from extdata to sd",
-"Copy gamecoin.dat from sd to extdata"};
-menuent_funcptr mainmenu_entryhandlers[5] = {menu_300coins, menu_10coins, menu_0coins, menu_gamecoindat2sd, menu_sd2gamecoindat};
+"Copy gamecoin.dat from sd to extdata",
+"Set Play Coins to custom amount"};
+menuent_funcptr mainmenu_entryhandlers[6] = {menu_300coins, menu_10coins, menu_0coins, menu_gamecoindat2sd, menu_sd2gamecoindat};
 
 u8 *filebuffer;
 u32 filebuffer_maxsize = 0x400000;
@@ -138,6 +145,71 @@ int menu_sd2gamecoindat()
 	return 0;
 }
 
+int menu_customplaycoins
+{
+	printf("                                              ^\nSet amount of Play Coins: <%d", value1, "> <%d", value2, "> <%d", value3, ">\n                                              v")
+	int position = 1;
+	if (position = 1 && kDown && KEY_UP)
+	{
+		value1++;
+	}
+	if (position = 1 && kDown && KEY_DOWN)
+	{
+		value1--
+	}
+	if (position = 1 && kDown && KEY_DOWN && value1 = 0)
+	{
+		value1 = 3;
+	}
+	if (position = 1 && kDown && KEY_A)
+	{
+		printf("                                                     ^\nSet amount of Play Coins: <%d", value1, "> <%d", value2, "> <%d", value3, ">\n                                                     v");
+		position = 2;
+	}
+	if (position = 2 && kDown && KEY_UP)
+	{
+		value2++;
+	}
+	if (position = 2 && kDown && KEY_DOWN)
+	{
+		value2--
+	}
+	if (position = 2 && kDown && KEY_DOWN && value2 = 0)
+	{
+		value2 = 9;
+	}
+	if (position = 2 && kDown && KEY_DOWN || KEY_UP && value1 = 3 && value2 = 0)
+	{
+		value2 = 0;
+	}
+	if (position = 2 && kDown && KEY_A)
+	{
+		printf("                                                            ^\nSet amount of Play Coins: <%d", value1, "> <%d", value2, "> <%d", value3, ">\n                                                            v");
+		position = 3;
+	}
+	if (position = 3 && kDown && KEY_UP)
+	{
+		value3++;
+	}
+	if (position = 3 && kDown && KEY_DOWN)
+	{
+		value3--
+	}
+	if (position = 3 && kDown && KEY_DOWN && value2 = 0)
+	{
+		value3 = 9;
+	}
+	if (position = 3 && kDown && KEY_DOWN || KEY_UP && value1 = 3 && value2 = 0 && value3 = 0)
+	{
+		value3 = 0;
+	}
+	if (position = 3 && kDown && KEY_A)
+	{
+		int z = atoi(value)
+		
+                position = 0;
+	}
+}
 int setcoins(u8 highByte, u8 lowByte)
 {	
 	Result ret=0;
