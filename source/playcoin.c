@@ -203,17 +203,17 @@ int menu_customplaycoins()
 	{
 		value3 = 9;
 	}
-	if (position = 3 && kDown && KEY_DOWN || KEY_UP && value1 = 3 && value2 = 0 && value3 = 0)
+	if (position = 3 && kDown && KEY_DOWN || KEY_UP && value1 = 3 && value2 = 0 && value3 == 0)
 	{
 		value3 = 0;
 	}
 	if (position = 3 && kDown && KEY_A)
 	{
 		position = 0;
-		int z = atoi(value11);
-		int y = atoi(value12);
-		sprintf(value11hextemp, "0x%02x", value11);
-		sprintf(value12hextemp, "0x%02x", value12);
+		unsigned int z = atoi(value11);
+		unsigned int y = atoi(value12);
+		sprintf(value11hextemp, "0x%02x", z);
+		sprintf(value12hextemp, "0x%02x", y);
 		value11hex = atoi(value11hextemp);
 		value12hex = atoi(value12hextemp);
 		
