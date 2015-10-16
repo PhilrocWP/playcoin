@@ -20,8 +20,6 @@ int mainmenu_totalentries = 5;
 int value1 = 0;
 int value2 = 0;
 int value3 = 0;
-int value11[1] = {value1};
-int value12[2] = {value2, value3};
 int value11hextemp[4];
 int value12hextemp[4];
 int value11hex = 0x00;
@@ -151,7 +149,9 @@ int menu_sd2gamecoindat()
 
 int menu_customplaycoins
 {
-	printf("                                              ^\nSet amount of Play Coins: <%d", value1, "> <%d", value2, "> <%d", value3, ">\n                                              v")
+	int value11[1] = {value1};
+        int value12[2] = {value2, value3};
+	printf("                                              ^\nSet amount of Play Coins: <%d", value1, "> <%d", value2, "> <%d", value3, ">\n                                              v");
 	int position = 1;
 	if (position = 1 && kDown && KEY_UP)
 	{
