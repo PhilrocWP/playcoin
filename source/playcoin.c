@@ -147,7 +147,7 @@ int menu_sd2gamecoindat()
 	return 0;
 }
 
-int menu_customplaycoins
+int menu_customplaycoins()
 {
 	int value11[1] = {value1};
         int value12[2] = {value2, value3};
