@@ -145,6 +145,7 @@ int menu_sd2gamecoindat()
 
 int menu_customplaycoins()
 {
+	do	{
 	printf("                                              ^\nSet amount of Play Coins: <%d", value1, "> <%d", value2, "> <%d", value3, ">\n                                              v");
 	int position = 1;
 	if (position = 1 && kDown && KEY_UP)
@@ -204,10 +205,12 @@ int menu_customplaycoins()
 	if (position = 3 && kDown && KEY_A)
 	{
 		position = 0;
-		unsigned int value11 = value1;
-		unsigned int value12 = (value2<<8) | value3;
-		return setcoins(value11, value12);
+	}		
 	}
+	while(position != 0);
+	unsigned int value11 = value1;
+	unsigned int value12 = (value2<<8) | value3;
+	return setcoins(value11, value12);
 }
 int setcoins(u8 highByte, u8 lowByte)
 {	
