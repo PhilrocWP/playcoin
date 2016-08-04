@@ -205,7 +205,7 @@ int menu_customplaycoins()
 	{
 		position = 0;
 		unsigned int value11 = value1;
-		unsigned int value12 = (value2<<24) | value3;
+		unsigned int value12 = (value2<<8) | value3;
 		return setcoins(value11, value12);
 	}
 }
