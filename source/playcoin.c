@@ -17,13 +17,9 @@ int menu_customplaycoins();
 int setcoins(u8 highByte, u8 lowByte);
 
 int mainmenu_totalentries = 5;
-int value1 = 0;
-int value2 = 0;
-int value3 = 0;
-int value11hextemp[4];
-int value12hextemp[4];
-int value11hex = 0x00;
-int value12hex = 0x00;
+unsigned int value1 = 0x00;
+unsigned int value2 = 0x00;
+unsigned int value3 = 0x00;
 char *mainmenu_entries[6] = {
 "Set Play Coins to 300",
 "Set Play Coins to 10",
@@ -149,8 +145,6 @@ int menu_sd2gamecoindat()
 
 int menu_customplaycoins()
 {
-	int value11[1] = {value1};
-        int value12[2] = {value2, value3};
 	printf("                                              ^\nSet amount of Play Coins: <%d", value1, "> <%d", value2, "> <%d", value3, ">\n                                              v");
 	int position = 1;
 	if (position = 1 && kDown && KEY_UP)
@@ -163,7 +157,7 @@ int menu_customplaycoins()
 	}
 	if (position = 1 && kDown && KEY_DOWN && value1 = 0)
 	{
-		value1 = 3;
+		value1 = 0x03u;
 	}
 	if (position = 1 && kDown && KEY_A)
 	{
@@ -180,11 +174,11 @@ int menu_customplaycoins()
 	}
 	if (position = 2 && kDown && KEY_DOWN && value2 = 0)
 	{
-		value2 = 9;
+		value2 = 0x09u;
 	}
 	if (position = 2 && kDown && KEY_DOWN || KEY_UP && value1 = 3 && value2 = 0)
 	{
-		value2 = 0;
+		value2 = 0x00u;
 	}
 	if (position = 2 && kDown && KEY_A)
 	{
@@ -201,24 +195,18 @@ int menu_customplaycoins()
 	}
 	if (position = 3 && kDown && KEY_DOWN && value2 = 0)
 	{
-		value3 = 9;
+		value3 = 0x09u;
 	}
 	if (position = 3 && kDown && KEY_DOWN || KEY_UP && value1 = 3 && value2 = 0 && value3 == 0)
 	{
-		value3 = 0;
+		value3 = 0x00u;
 	}
 	if (position = 3 && kDown && KEY_A)
 	{
 		position = 0;
-		unsigned int z = atoi(value11);
-		unsigned int y = atoi(value12);
-		sprintf(value11hextemp, "0x%02x", z);
-		sprintf(value12hextemp, "0x%02x", y);
-		value11hex = atoi(value11hextemp);
-		value12hex = atoi(value12hextemp);
-		
-		return setcoins(value11hex, value12hex);
-                
+		unsigned int value11 = value1;
+		unsigned int value12 = (value2<<24) | value3;
+		return setcoins(value11, value12);
 	}
 }
 int setcoins(u8 highByte, u8 lowByte)
@@ -279,6 +267,13 @@ int handle_menus()
 	}
 
 	return -2;
+}
+
+unsigned int concatenate(unsigned int x, unsigned int y) {
+    unsigned int pow = 0x10;
+    while(y >= pow)
+        pow *= 0x10;
+    return x * pow + y;        
 }
 
 int main()
